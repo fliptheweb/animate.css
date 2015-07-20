@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
-  animateCss = require('animate.css');
+  animateCSS = require('animate.css');
 
   var concatAnim;
 
@@ -43,14 +43,14 @@ module.exports = function(grunt) {
 
   // function to perform custom task
   concatAnim = function () {
-    var files = animateCss.getFilesFromConfig();
+    var files = animateCSS.getFilesFromConfig();
 
     if (!files) {
       grunt.log.writeln('No animations activated.');
     } else {
       grunt.log.writeln(files.length + (files.length > 1 ? ' animations' : ' animation') + ' activated.');
     }
-    files.push(animateCss.getFileForBase());
+    files.push(animateCSS.getFileForBase());
 
     grunt.config('concat', { 'animate.css': files });
     grunt.task.run('concat');

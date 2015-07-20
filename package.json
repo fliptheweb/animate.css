@@ -1,6 +1,6 @@
 {
   "name": "animate.css",
-  "version": "3.2.5",  
+  "version": "3.2.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/daneden/animate.css.git"
@@ -12,16 +12,20 @@
     "directories": {
       "lib": "./"
     }
-  },  
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
-    "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-cssmin": "~0.8.0",
-    "load-grunt-tasks": "~0.2.0"
+    "grunt-contrib-watch": "~0.5.3",
+    "load-grunt-tasks": "~0.2.0",
+    "mocha": "^2.2.5"
   },
   "spm": {
     "main": "./animate.css"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
