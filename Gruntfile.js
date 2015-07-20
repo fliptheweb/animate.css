@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
-  animateCss = require('./index.js');
+  animateCss = require('animate.css');
 
   var concatAnim;
 
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
     } else {
       grunt.log.writeln(files.length + (files.length > 1 ? ' animations' : ' animation') + ' activated.');
     }
-    files.unshift('source/_base.css');
+    files.push('source/_base.css');
 
     grunt.config('concat', { 'animate.css': files });
     grunt.task.run('concat');

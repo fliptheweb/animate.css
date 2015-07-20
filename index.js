@@ -1,5 +1,6 @@
 var animateConfig = require('./animate-config.json');
 var fs = require('fs');
+var baseStylesPath = 'source/_base.css';
 
 module.exports = {
   getFilesForAnimations: function(animations) {
