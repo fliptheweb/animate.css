@@ -3,17 +3,24 @@ var fs = require('fs');
 var baseStylesPath = 'source/_base.css';
 
 module.exports = {
+  getFileForBase: function() {
+    return baseStylesPath;
+  },
+
   getFilesForAnimations: function(animations) {
     var categories = animateConfig;
     var targetFiles = [];
+    var includeAllCategory, file, files, category;
 
     for (category in categories) {
+      includeAllCategory = false;
       files = categories[category];
+      if (animations.indexOf(category)) {
+        includeAllCategory = true;
+      }
       for (file in files) {
-        if (files[file]) {
-          if (animations.indexOf(file) != -1) {
-            targetFiles.push('source/' + category + '/' + file + '.css');
-          }
+        if (animations.indexOf(file) != -1 || includeAllCategory) {
+          targetFiles.push('source/' + category + '/' + file + '.css');
         }
       }
     }
@@ -24,6 +31,7 @@ module.exports = {
   getAnimationsFromConfig: function() {
     var categories = animateConfig;
     var targetAnimations = [];
+    var category, animation, animations;
 
     for (category in categories) {
       animations = categories[category];
@@ -71,5 +79,9 @@ module.exports = {
     });
 
     return styles;
+  },
+
+  getStylesForBase: function() {
+    return fs.readFileSync(this.getFileForBase());
   }
 }

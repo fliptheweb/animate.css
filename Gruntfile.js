@@ -50,7 +50,7 @@ module.exports = function(grunt) {
     } else {
       grunt.log.writeln(files.length + (files.length > 1 ? ' animations' : ' animation') + ' activated.');
     }
-    files.push('source/_base.css');
+    files.push(animateCss.getFileForBase());
 
     grunt.config('concat', { 'animate.css': files });
     grunt.task.run('concat');
