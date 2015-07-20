@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 
   // function to perform custom task
   concatAnim = function () {
-    var files = animateCss.getFileNamesForAnimations(animateCss.getAnimationsFromConfig());
+    var files = animateCss.getFilesFromConfig();
 
     if (!files) {
       grunt.log.writeln('No animations activated.');

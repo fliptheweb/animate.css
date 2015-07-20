@@ -1,7 +1,8 @@
 var animateConfig = require('./animate-config.json');
+var fs = require('fs');
 
 module.exports = {
-  getFileNamesForAnimations: function(animations) {
+  getFilesForAnimations: function(animations) {
     var categories = animateConfig;
     var targetFiles = [];
 
@@ -33,5 +34,41 @@ module.exports = {
     }
 
     return targetAnimations;
+  },
+
+  getFilesFromConfig: function() {
+    return this.getFilesForAnimations(this.getAnimationsFromConfig());
+  },
+
+  getStylesForAnimations: function(animations) {
+    var files = this.getFilesForAnimations(animations);
+    var styles;
+
+    files.forEach(function(file) {
+      styles += fs.readFileSync(file);
+    });
+
+    return styles;
+  },
+
+  getStylesForFiles: function(files) {
+    var styles;
+
+    files.forEach(function(file) {
+      styles += fs.readFileSync(file);
+    });
+
+    return styles;
+  },
+
+  getStylesFromConfig: function() {
+    var files = this.getFilesFromConfig();
+    var styles;
+
+    files.forEach(function(file) {
+      styles += fs.readFileSync(file);
+    });
+
+    return styles;
   }
 }
