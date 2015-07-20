@@ -1,0 +1,37 @@
+var animateConfig = require('./animate-config.json');
+
+module.exports = {
+  getFileNamesForAnimations: function(animations) {
+    var categories = animateConfig;
+    var targetFiles = [];
+
+    for (category in categories) {
+      files = categories[category];
+      for (file in files) {
+        if (files[file]) {
+          if (animations.indexOf(file) != -1) {
+            targetFiles.push('source/' + category + '/' + file + '.css');
+          }
+        }
+      }
+    }
+
+    return targetFiles;
+  },
+
+  getAnimationsFromConfig: function() {
+    var categories = animateConfig;
+    var targetAnimations = [];
+
+    for (category in categories) {
+      animations = categories[category];
+      for (animation in animations) {
+        if (animations[animation]) {
+          targetAnimations.push(animation);
+        }
+      }
+    }
+
+    return targetAnimations;
+  }
+}

@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
+  animateCss = require('./index.js');
 
   var concatAnim;
 
@@ -27,7 +28,7 @@ module.exports = function(grunt) {
     cssmin: {
       minify: {
         src: ['animate.css'],
-        dest: 'animate.min.css',
+        dest: 'animate.min.css'
       }
     },
 
@@ -40,35 +41,19 @@ module.exports = function(grunt) {
 
   });
 
-  // fuction to perform custom task
+  // function to perform custom task
   concatAnim = function () {
+    var files = animateCss.getFileNamesForAnimations(animateCss.getAnimationsFromConfig());
 
-    var categories = grunt.file.readJSON('animate-config.json'),
-      category, files, file,
-      target = [ 'source/_base.css' ],
-      count = 0;
-
-    for ( category in categories ) {
-      if ( categories.hasOwnProperty(category) ) {
-        files = categories[category]
-        for (file in files) {
-          if ( files.hasOwnProperty(file) && files[file] ) {
-            target.push('source/' + category + '/' + file + '.css');
-            count += 1;
-          }
-        }
-      }
-    }
-
-    if (!count) {
+    if (!files) {
       grunt.log.writeln('No animations activated.');
     } else {
-      grunt.log.writeln(count + (count > 1 ? ' animations' : ' animation') + ' activated.');
+      grunt.log.writeln(files.length + (files.length > 1 ? ' animations' : ' animation') + ' activated.');
     }
+    files.unshift('source/_base.css');
 
-    grunt.config('concat', { 'animate.css': target });
+    grunt.config('concat', { 'animate.css': files });
     grunt.task.run('concat');
-
   };
 
   // register task
