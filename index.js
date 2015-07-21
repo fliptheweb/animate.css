@@ -1,5 +1,6 @@
 var animateConfig = require('./animate-config.json');
 var fs = require('fs');
+var path = require('path');
 var baseStylesPath = 'source/_base.css';
 
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
       }
       for (file in files) {
         if (animations.indexOf(file) != -1 || includeAllCategory) {
-          targetFiles.push('source/' + category + '/' + file + '.css');
+          targetFiles.push(path.resolve(__dirname, 'source/' + category + '/' + file + '.css'));
         }
       }
     }
