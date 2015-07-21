@@ -16,7 +16,7 @@ module.exports = {
     for (category in categories) {
       includeAllCategory = false;
       files = categories[category];
-      if (animations.indexOf(category)) {
+      if (animations.indexOf(category) != -1) {
         includeAllCategory = true;
       }
       for (file in files) {
