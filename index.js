@@ -1,7 +1,7 @@
 var animateConfig = require('./animate-config.json');
 var fs = require('fs');
 var path = require('path');
-var baseStylesPath = 'source/_base.css';
+var baseStylesPath = path.resolve(__dirname, 'source/_base.css');
 
 module.exports = {
   getFileForBase: function() {
