@@ -162,6 +162,23 @@ Next, run `grunt watch` to watch for changes and compile your custom builds. For
 }
 ```
 
+## JavaScript API
+Animate.css is provide js api for using in other modules. You can include Animate.css to your js project as module:
+```javascript
+var animatecss = require('animate.css');
+```
+
+```
+animatecss.getAnimationsFromConfig();
+animatecss.getFileForBase();
+animatecss.getFilesForAnimations(animations);
+animatecss.getFilesFromConfig();
+animatecss.getStylesForAnimations(animations);
+animatecss.getStylesForFiles(files);
+animatecss.getStylesFromConfig();
+animatecss.getStylesForBase()
+```
+
 ## License
 Animate.css is licensed under the MIT license. (http://opensource.org/licenses/MIT)
 
