@@ -52,7 +52,7 @@ module.exports = {
 
   getStylesForAnimations: function(animations) {
     var files = this.getFilesForAnimations(animations);
-    var styles;
+    var styles = '';
 
     files.forEach(function(file) {
       styles += fs.readFileSync(file);
@@ -62,7 +62,7 @@ module.exports = {
   },
 
   getStylesForFiles: function(files) {
-    var styles;
+    var styles = '';
 
     files.forEach(function(file) {
       styles += fs.readFileSync(file);
@@ -73,7 +73,7 @@ module.exports = {
 
   getStylesFromConfig: function() {
     var files = this.getFilesFromConfig();
-    var styles;
+    var styles = '';
 
     files.forEach(function(file) {
       styles += fs.readFileSync(file);
