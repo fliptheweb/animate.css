@@ -3,6 +3,12 @@ var fs = require('fs');
 var path = require('path');
 var baseStylesPath = path.resolve(__dirname, 'source/_base.css');
 
+var getStylesForFiles = function(filepaths) {
+  return filepaths.reduce(function(styles, filepath) {
+    styles += fs.readFileSync(filepath);
+  }, '');
+};
+
 module.exports = {
   getFileForBase: function() {
     return baseStylesPath;
@@ -51,24 +57,14 @@ module.exports = {
   },
 
   getStylesForAnimations: function(animations) {
-    return this.getFilesForAnimations(animations).reduce(function(styles, filepath) {
-      return styles += fs.readFileSync(filepath);
-    }, '');
-  },
-
-  getStylesForFiles: function(filepaths) {
-    return filepaths.reduce(function(styles, filepath) {
-      styles += fs.readFileSync(filepath);
-    }, '');
+    return getStylesForFiles(this.getFilesForAnimations());
   },
 
   getStylesFromConfig: function() {
-    return this.getFilesFromConfig().reduce(function(styles, filepath) {
-      styles += fs.readFileSync(filepath);
-    }, '');
+    return getStylesForFiles(this.getFilesFromConfig());
   },
 
   getStylesForBase: function() {
-    return fs.readFileSync(this.getFileForBase());
+    return getStylesForFiles(this.getFileForBase());
   }
 }

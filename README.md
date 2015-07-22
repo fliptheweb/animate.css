@@ -168,28 +168,25 @@ Animate.css is provide js api for getting styles for animations. You can include
 var animatecss = require('animate.css');
 ```
 
-### .getAnimationsFromConfig() ###
+#### `.getAnimationsFromConfig()` ####
 Get animations from config
 
-### .getFilesForAnimations(animations) ###
+#### `.getFilesForAnimations(animations)` ####
 Get filepaths for list of animations, for example ['bounce', 'zooming_entrances']
 
-### .getFilesFromConfig() ###
+#### `.getFilesFromConfig()` ####
 Get filepaths for animations from config
 
-### .getFileForBase() ###
+#### `.getFileForBase()` ####
 Get filepath for base styles
 
-### .getStylesForAnimations(animations) ###
+#### `.getStylesForAnimations(animations)` ####
 Get css styles for list of animations, for example ['bounce', 'zooming_entrances']
 
-### .getStylesForFiles(files) ###
-Get css styles for
-
-### .getStylesFromConfig() ###
+#### `.getStylesFromConfig()` ####
 Get css styles for animations from config
 
-### .getStylesForBase() ###
+#### `.getStylesForBase()` ####
 Get css styles for base styles
 
 ## License
