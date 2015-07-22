@@ -163,21 +163,34 @@ Next, run `grunt watch` to watch for changes and compile your custom builds. For
 ```
 
 ## JavaScript API
-Animate.css is provide js api for using in other modules. You can include Animate.css to your js project as module:
+Animate.css is provide js api for getting styles for animations. You can include animate.css to your js project as module:
 ```javascript
 var animatecss = require('animate.css');
 ```
 
-```
-animatecss.getAnimationsFromConfig();
-animatecss.getFileForBase();
-animatecss.getFilesForAnimations(animations);
-animatecss.getFilesFromConfig();
-animatecss.getStylesForAnimations(animations);
-animatecss.getStylesForFiles(files);
-animatecss.getStylesFromConfig();
-animatecss.getStylesForBase()
-```
+### .getAnimationsFromConfig() ###
+Get animations from config
+
+### .getFilesForAnimations(animations) ###
+Get filepaths for list of animations, for example ['bounce', 'zooming_entrances']
+
+### .getFilesFromConfig() ###
+Get filepaths for animations from config
+
+### .getFileForBase() ###
+Get filepath for base styles
+
+### .getStylesForAnimations(animations) ###
+Get css styles for list of animations, for example ['bounce', 'zooming_entrances']
+
+### .getStylesForFiles(files) ###
+Get css styles for
+
+### .getStylesFromConfig() ###
+Get css styles for animations from config
+
+### .getStylesForBase() ###
+Get css styles for base styles
 
 ## License
 Animate.css is licensed under the MIT license. (http://opensource.org/licenses/MIT)
