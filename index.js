@@ -51,35 +51,21 @@ module.exports = {
   },
 
   getStylesForAnimations: function(animations) {
-    var files = this.getFilesForAnimations(animations);
-    var styles = '';
-
-    files.forEach(function(file) {
-      styles += fs.readFileSync(file);
-    });
-
-    return styles;
+    return this.getFilesForAnimations(animations).reduce(function(styles, filepath) {
+      return styles += fs.readFileSync(filepath);
+    }, '');
   },
 
-  getStylesForFiles: function(files) {
-    var styles = '';
-
-    files.forEach(function(file) {
-      styles += fs.readFileSync(file);
-    });
-
-    return styles;
+  getStylesForFiles: function(filepaths) {
+    return filepaths.reduce(function(styles, filepath) {
+      styles += fs.readFileSync(filepath);
+    }, '');
   },
 
   getStylesFromConfig: function() {
-    var files = this.getFilesFromConfig();
-    var styles = '';
-
-    files.forEach(function(file) {
-      styles += fs.readFileSync(file);
-    });
-
-    return styles;
+    return this.getFilesFromConfig().reduce(function(styles, filepath) {
+      styles += fs.readFileSync(filepath);
+    }, '');
   },
 
   getStylesForBase: function() {
